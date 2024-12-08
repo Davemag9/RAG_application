@@ -35,9 +35,9 @@ def prompt (question, context):
     """
     return prompt_text
 
+
 def random_article():
     ds = load_dataset("pt-sk/research_papers_short")
     my_docs = ds['train'].select(range(1000))
-
-    return my_docs[random.randint(0, len(my_docs) - 1)]
-
+    random_index = random.randint(0, len(my_docs) - 1)
+    return my_docs[random_index]['title'], my_docs[random_index]['abstract']
