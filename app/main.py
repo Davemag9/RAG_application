@@ -40,9 +40,9 @@ def run_RAG(query, search_type, API_KEY='3uTKE448T558Qmem6pBSbvW54nHBR4FP6Xnn6jC
 
 
 if __name__ == '__main__':
-    # text = 'what evidence lower bound produce When used as a surrogate objective for maximum likelihood estimation in latent variable model'
+    text = 'what evidence lower bound produce When used as a surrogate objective for maximum likelihood estimation in latent variable model'
 
-    # print(run_RAG(text, 'vector_base')) #return answer and context files
+    print(run_RAG(text, 'vector_base')) #return answer and context files
     # print(run_RAG(text, 'bm25')) #return answer and context files
     # print(run_RAG(text, 'None')) #return answer, no context files
     # print(run_RAG("WHO iS JOE BIDEN", 'bm25')) #return answer, no context files
