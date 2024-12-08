@@ -5,7 +5,7 @@ from datasets import load_dataset
 import nltk
 from nltk.tokenize import sent_tokenize
 
-from app.utils.helpful_functions import get_metadata
+from app.utils.helpful_functions import read_metadata
 
 nltk.download('punkt_tab')
 
@@ -118,7 +118,7 @@ def write_base(base):
 
 def script1():
     ds = load_dataset("pt-sk/research_papers_short")
-    my_docs = ds['train'].select(range(100))
+    my_docs = ds['train'].select(range(1000))
 
     print("complete1")
     model = Embedding()
@@ -132,7 +132,7 @@ def script1():
 
 
 def script2():
-    tmp, abstract_texts  = get_metadata()
+    tmp, abstract_texts  = read_metadata()
 
     print("complete4")
     docs_preprocessing(abstract_texts)
