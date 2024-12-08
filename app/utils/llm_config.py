@@ -17,5 +17,5 @@ class LLM:
         return response.choices[0].message.content
     
 
-# llm = LLM()
+# llm = LLM('3uTKE448T558Qmem6pBSbvW54nHBR4FP6Xnn6jCl')
 # print(llm.generate_answer(""))

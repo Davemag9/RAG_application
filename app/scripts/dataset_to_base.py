@@ -57,7 +57,7 @@ def text_preprocessing(text):
 def write_preprocessed_docs(preprocessed_docs):
      
      with open(PATH_PREPROCESSED_DOCS, "w") as f:
-        json.dump(preprocessed_docs, f, ensure_ascii=False, indent=4)
+        json.dump(preprocessed_docs, f, indent=4)
 
 
 def docs_preprocessing(docs):
@@ -70,7 +70,7 @@ def get_chunks_and_metadata(docs, max_tokens):
 
     chunked_texts, metadata = [], []
 
-    for text in docs:
+    for _, text in enumerate(docs):
         sentences = sent_tokenize(text['abstract'])
         current_chunk = []
         current_chunk_length = 0
@@ -104,7 +104,8 @@ def write_metadata(metadata):
 
 def create_base_metadata(docs, model: Embedding, dimension = 384):
     chunks, metadata = get_chunks_and_metadata(docs, 256)
-    embeddings = model.get_embeddings(chunks)
+    embeddings = model.get_embedding(chunks)
+
     index = faiss.IndexFlatL2(dimension)
     index.add(embeddings)
 
@@ -117,7 +118,7 @@ def write_base(base):
 
 def script1():
     ds = load_dataset("pt-sk/research_papers_short")
-    my_docs = ds['train'].select(range(10000))
+    my_docs = ds['train'].select(range(100))
 
     print("complete1")
     model = Embedding()
@@ -129,11 +130,13 @@ def script1():
     print("complete3")
     write_base(base)
 
+
 def script2():
-    abstract_texts, tmp = get_metadata()
+    tmp, abstract_texts  = get_metadata()
 
     print("complete4")
     docs_preprocessing(abstract_texts)
+
 
 def run_scripts():
     script1()
@@ -143,4 +146,4 @@ def run_scripts():
 
 
 if __name__ == '__main__':
-    script2()
+    run_scripts()
