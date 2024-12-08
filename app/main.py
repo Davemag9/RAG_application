@@ -1,5 +1,5 @@
 from app.utils.embeding import Embedding
-from app.utils.helpful_functions import read_metadata, prompt
+from app.utils.helpful_functions import read_metadata, prompt, random_article
 from app.utils.llm_config import LLM
 from app.utils.search import Search
 
@@ -40,13 +40,12 @@ def run_RAG(query, search_type, API_KEY='3uTKE448T558Qmem6pBSbvW54nHBR4FP6Xnn6jC
 
 
 if __name__ == '__main__':
-    text = 'what evidence lower bound produce When used as a surrogate objective for maximum likelihood estimation in latent variable model'
+    # text = 'what evidence lower bound produce When used as a surrogate objective for maximum likelihood estimation in latent variable model'
 
-    # "I don't have enough information to answer this question."
+    # print(run_RAG(text, 'vector_base')) #return answer and context files
+    # print(run_RAG(text, 'bm25')) #return answer and context files
+    # print(run_RAG(text, 'None')) #return answer, no context files
+    # print(run_RAG("WHO iS JOE BIDEN", 'bm25')) #return answer, no context files
+    # random_article() #return 1 random title with article
 
-    # print(run_RAG(text, 'vector_base'))
-    # print(run_RAG(text, 'bm25'))
-    # print(run_RAG(text, 'None'))
-
-    # print(run_RAG("WHO iS JOE BIDEN", 'bm25'))
-
+    # search_type only None, bm25 or vector_base

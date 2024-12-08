@@ -1,4 +1,7 @@
+import random
+
 from app.config import PATH_METADATA
+from datasets import load_dataset
 import json
 
 
@@ -31,4 +34,10 @@ def prompt (question, context):
             Question: {question}
     """
     return prompt_text
+
+def random_article():
+    ds = load_dataset("pt-sk/research_papers_short")
+    my_docs = ds['train'].select(range(1000))
+
+    return my_docs[random.randint(0, len(my_docs) - 1)]
 
