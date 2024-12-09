@@ -28,7 +28,7 @@ def run_RAG(query, search_type, API_KEY='3uTKE448T558Qmem6pBSbvW54nHBR4FP6Xnn6jC
 
     context = ""
     for i, index in enumerate(search_list):
-        context += " [" + str(i + 1) + "] " + abstract_texts[index]
+        context += " (" + str(i + 1) + ") " + abstract_texts[index]
 
     question = prompt(query, context)
 
@@ -99,9 +99,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-#
-# if __name__ == '__main__':
 #     text = 'what evidence lower bound produce When used as a surrogate objective for maximum likelihood estimation in latent variable model'
 #
 #     print(run_RAG(text, 'vector_base')) #return answer and context files
@@ -109,5 +106,4 @@ if __name__ == '__main__':
 #     # print(run_RAG(text, 'None')) #return answer, no context files
 #     # print(run_RAG("WHO iS JOE BIDEN", 'bm25')) #return answer, no context files
 #     # random_article() #return 1 random title with article
-#
 #     # search_type only None, bm25 or vector_base

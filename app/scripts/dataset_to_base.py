@@ -67,34 +67,36 @@ def docs_preprocessing(docs):
 
 
 def get_chunks_and_metadata(docs, max_tokens):
+    chunked_texts, metadata = [], []  # Initialize lists to store chunks and their metadata.
 
-    chunked_texts, metadata = [], []
-
-    for _, text in enumerate(docs):
-        sentences = sent_tokenize(text['abstract'])
+    for tmp, text in enumerate(docs):
+        sentences = sent_tokenize(text['abstract'])  # Split the abstract into sentences.
         current_chunk = []
         current_chunk_length = 0
 
         for sentence in sentences:
             sentence_length = len(sentence.split())
 
+            # If adding the sentence exceeds the token limit, finalize the current chunk.
             if current_chunk_length + sentence_length > max_tokens:
                 chunk = " ".join(current_chunk)
                 chunked_texts.append(chunk)
                 metadata.append({'abstract_title': text['title'], 'abstract_text': chunk})
-                
+
                 current_chunk = []
                 current_chunk_length = 0
 
-            current_chunk.append(sentence)
-            current_chunk_length += sentence_length
+            current_chunk.append(sentence)  # Add the current sentence to the chunk.
+            current_chunk_length += sentence_length  # Update the token count.
 
+        # Handle any remaining sentences in the last chunk.
         if current_chunk_length != 0:
             chunk = " ".join(current_chunk)
             chunked_texts.append(chunk)
             metadata.append({'abstract_title': text['title'], 'abstract_text': chunk})
 
     return chunked_texts, metadata
+
 
 
 def write_metadata(metadata):

@@ -30,7 +30,7 @@ def prompt (question, context):
             If the necessary information is found in the provided documents, use it to construct your
             response and include a citation by referencing the document number in square brackets.
             For example:  "Natural Language Processing (NLP) is a field of artificial intelligence
-            that enables machines to understand, interpret, and generate human language.[3]."
+            that enables machines to understand, interpret, and generate human language.(3)."
             Question: {question}
     """
     return prompt_text
