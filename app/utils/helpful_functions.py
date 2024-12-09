@@ -28,7 +28,7 @@ def prompt (question, context):
             "I don't have enough information to answer this question."
             Do not invent or include any information not found in the documents.
             If the necessary information is found in the provided documents, use it to construct your
-            response and include a citation by referencing the document number in square brackets.
+            response and include a citation by referencing the document number in round brackets.
             For example:  "Natural Language Processing (NLP) is a field of artificial intelligence
             that enables machines to understand, interpret, and generate human language.(3)."
             Question: {question}
